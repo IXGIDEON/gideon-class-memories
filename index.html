@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memories Under The Stars - Class 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        /* Latar Belakang Galaksi dan Bintang */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0b0d17 url('https://www.transparenttextures.com/patterns/stardust.png'); /* Efek bintik bintang */
+            background-attachment: fixed;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Gradasi Langit Malam */
+        .night-sky {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top, #1e2761 0%, #0b0d17 100%);
+            z-index: -2;
+        }
+
+        /* Animasi Bintang Berkedip */
+        .star-blink {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: transparent;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            margin: 0;
+            background: linear-gradient(to bottom, #fff, #ffb7c5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.5));
+        }
+
+        .year {
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Galeri Grid 16 Foto */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* Kartu Foto Efek Kaca (Glassmorphism) */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 15px;
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 183, 197, 0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px; /* Ukuran sedang-besar */
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-weight: 400;
+            font-size: 1.1rem;
+            margin: 10px 0 5px;
+            color: #ffb7c5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 100px 20px 50px;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .gallery { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+            .card img { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="night-sky"></div>
+<div class="star-blink" id="stars"></div>
+
+<header>
+    <h1>💫memories of class💫</h1>
+    <h1>IX_GIDEON</h1>
+    <div class="year">
+class of 2026</div>
+    <p>
+every star holds one of our stories</p>
+</header>
+
+<div class="container">
+    <div class="gallery">
+        <div class="card"><img src="foto1.jpeg" alt="1"><h3>Kebersamaan yang indah</h3></div>
+        <div class="card"><img src="foto2.jpeg" alt="2"><h3>kelas yang penuh tawa</h3></div>
+        <div class="card"><img src="foto3.jpeg" alt="3"><h3>susah sesang bersama</h3></div>
+        <div class="card"><img src="foto4.jpeg" alt="4"><h3>3anak yang suka izin ke toilet tpi belok ke kantin</h3></div>
+        <div class="card"><img src="foto5.jpeg" alt="5"><h3>Ampun suhuu💥</h3></div>
+        <div class="card"><img src="foto6.jpeg" alt="6"><h3>kulkas Gideon</h3></div>
+        <div class="card"><img src="foto7.jpeg" alt="7"><h3>pembuat onar kelas🤞</h3></div>
+        <div class="card"><img src="foto8.jpeg" alt="8"><h3>foto selesei pelayanan</h3></div>
+        <div class="card"><img src="foto9.jpeg" alt="9"><h3>Cool woman GIDEON </h3></div>
+        <div class="card"><img src="foto10.jpeg" alt="10"><h3>3 sahabat sesad</h3></div>
+        <div class="card"><img src="foto11.jpeg" alt="11"><h3></h3>ndk lagi-lagi dah🤞</div>
+        <div class="card"><img src="foto12.jpeg" alt="12"><h3>bukan kami sumpah bukan kami🤞</h3></div>
+        <div class="card"><img src="foto13.jpeg" alt="13"><h3>Hujan di Sekolah</h3></div>
+        <div class="card"><img src="foto14.jpeg" alt="14"><h3>last pelayanan</h3></div>
+        <div class="card"><img src="foto15.jpeg" alt="15"><h3>admin and member GIDEON</h3></div>
+        <div class="card"><img src="foto16.jpeg" alt="16"><h3>Sampai Jumpa Lagi</h3></div>
+    </div>
+</div>
+
+<footer>
+    <p>See you in the next story,,,
+
+Follow Instagram: IX_GIDEON❤️</p>
+</footer>
+
+<script>
+    // Membuat bintang-bintang kecil secara acak di latar belakang
+    function createStars() {
+        const container = document.getElementById('stars');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.style.position = 'absolute';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.background = 'white';
+            star.style.borderRadius = '50%';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.opacity = Math.random();
+            star.style.boxShadow = '0 0 5px white';
+            
+            // Animasi kedip
+            star.animate([
+                { opacity: 0.2 },
+                { opacity: 1 },
+                { opacity: 0.2 }
+            ], {
+                duration: 2000 + Math.random() * 3000,
+                iterations: Infinity
+            });
+
+            container.appendChild(star);
+        }
+    }
+    createStars();
+</script>
+
+</body>
+</html>
