@@ -3,203 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memories Under The Stars - Class 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <title>Memories Under The Stars - IX GIDEON</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Latar Belakang Galaksi dan Bintang */
         body {
             margin: 0;
             padding: 0;
-            background: #0b0d17 url('https://www.transparenttextures.com/patterns/stardust.png'); /* Efek bintik bintang */
-            background-attachment: fixed;
+            background: #0b0d17;
             color: white;
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
         }
 
-        /* Gradasi Langit Malam */
-        .night-sky {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at top, #1e2761 0%, #0b0d17 100%);
-            z-index: -2;
-        }
-
-        /* Animasi Bintang Berkedip */
-        .star-blink {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: transparent;
-        }
-
-        header {
+        /* --- SAMPUL UTAMA (HERO SECTION) --- */
+        .hero-cover {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 80px 20px;
+            background: linear-gradient(rgba(11, 13, 23, 0.4), rgba(11, 13, 23, 0.8)), 
+                        url('sampul.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        h1 {
+        .hero-title {
             font-family: 'Dancing Script', cursive;
-            font-size: 4.5rem;
+            font-size: 6rem;
             margin: 0;
             background: linear-gradient(to bottom, #fff, #ffb7c5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.5));
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.4));
+            z-index: 2;
         }
 
-        .year {
+        .hero-subtitle {
             font-size: 1.5rem;
-            letter-spacing: 5px;
+            font-weight: 300;
+            letter-spacing: 4px;
             margin-top: 10px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .hero-tagline {
+            font-style: italic;
             opacity: 0.8;
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            font-size: 1.2rem;
+            animation: bounce 2s infinite;
+            opacity: 0.7;
+            z-index: 2;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* --- BAGIAN GALERI --- */
+        .gallery-section {
+            padding: 60px 20px;
+            background: radial-gradient(circle at top, #1e2761 0%, #0b0d17 100%);
+            position: relative;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
         }
 
-        /* Galeri Grid 16 Foto */
-        .gallery {
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
-        /* Kartu Foto Efek Kaca (Glassmorphism) */
         .card {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 15px;
-            transition: all 0.4s ease;
-            text-align: center;
+            transition: transform 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-15px) scale(1.02);
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 183, 197, 0.5);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            transform: translateY(-10px);
+            border-color: #ffb7c5;
         }
 
         .card img {
             width: 100%;
-            height: 300px; /* Ukuran sedang-besar */
+            height: 300px;
             object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            font-weight: 400;
-            font-size: 1.1rem;
-            margin: 10px 0 5px;
-            color: #ffb7c5;
+            display: block;
         }
 
         footer {
             text-align: center;
-            padding: 100px 20px 50px;
+            padding: 80px 20px;
             opacity: 0.6;
-            font-size: 0.9rem;
+            background: #0b0d17;
         }
 
-        /* Responsif */
+        #star-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
         @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .gallery { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-            .card img { height: 250px; }
+            .hero-title { font-size: 3.5rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .card img { height: 200px; }
         }
     </style>
 </head>
 <body>
 
-<div class="night-sky"></div>
-<div class="star-blink" id="stars"></div>
+<!-- Audio -->
+<audio id="bgMusic" loop>
+    <source src="musik.mp3" type="audio/mpeg">
+</audio>
 
-<header>
-    <h1>💫memories of class💫</h1>
-    <h1>IX_GIDEON</h1>
-    <div class="year">
-class of 2026</div>
-    <p>
-every star holds one of our stories</p>
-</header>
+<!-- SAMPUL ATAS -->
+<div class="hero-cover">
+    <div id="star-container"></div>
+    <h1 class="hero-title">IX_GIDEON</h1>
+    <p class="hero-subtitle">Memories</p>
+    <p class="hero-tagline">"Tekan Layar Untuk Memutar Music"</p>
+    <div class="scroll-down">↓ Scroll Down</div>
+</div>
 
-<div class="container">
-    <div class="gallery">
-        <div class="card"><img src="foto1.jpeg" alt="1"><h3>Kebersamaan yang indah</h3></div>
-        <div class="card"><img src="foto2.jpeg" alt="2"><h3>kelas yang penuh tawa</h3></div>
-        <div class="card"><img src="foto3.jpeg" alt="3"><h3>susah senang bersama</h3></div>
-        <div class="card"><img src="foto4.jpeg" alt="4"><h3>3anak yang suka izin ke toilet tpi belok ke kantin</h3></div>
-        <div class="card"><img src="foto5.jpeg" alt="5"><h3>Ampun suhuu💥</h3></div>
-        <div class="card"><img src="foto6.jpeg" alt="6"><h3>kulkas Gideon</h3></div>
-        <div class="card"><img src="foto7.jpeg" alt="7"><h3>pembuat onar kelas🤞</h3></div>
-        <div class="card"><img src="foto8.jpeg" alt="8"><h3>foto selesei pelayanan</h3></div>
-        <div class="card"><img src="foto9.jpeg" alt="9"><h3>Cool woman GIDEON </h3></div>
-        <div class="card"><img src="foto10.jpeg" alt="10"><h3>3 sahabat sesad</h3></div>
-        <div class="card"><img src="foto11.jpeg" alt="11"><h3></h3>ndk lagi-lagi dah🤞</div>
-        <div class="card"><img src="foto12.jpeg" alt="12"><h3>bukan kami sumpah bukan kami🤞</h3></div>
-        <div class="card"><img src="foto13.jpeg" alt="13"><h3>Hujan di Sekolah</h3></div>
-        <div class="card"><img src="foto14.jpeg" alt="14"><h3>last pelayanan</h3></div>
-        <div class="card"><img src="foto15.jpeg" alt="15"><h3>admin and member GIDEON</h3></div>
-        <div class="card"><img src="foto16.jpeg" alt="16"><h3>Sampai Jumpa Lagi</h3></div>
-        <div class="card"><img src="foto1.jpeg" alt="17"><h3>Kebersamaan yang indah</h3></div>
-        <div class="card"><img src="foto2.jpeg" alt="18"><h3>kelas yang penuh tawa</h3></div>
-        <div class="card"><img src="foto3.jpeg" alt="19"><h3>susah senang bersama</h3></div>
-        <div class="card"><img src="foto4.jpeg" alt="20"><h3>3anak yang suka izin ke toilet tpi belok ke kantin</h3></div>
-        <div class="card"><img src="foto5.jpeg" alt="21"><h3>Ampun suhuu💥</h3></div>
-        <div class="card"><img src="foto6.jpeg" alt="22"><h3>kulkas Gideon</h3></div>
-        <div class="card"><img src="foto7.jpeg" alt="23"><h3>pembuat onar kelas🤞</h3></div>
-        <div class="card"><img src="foto8.jpeg" alt="24"><h3>foto selesei pelayanan</h3></div>
-        <div class="card"><img src="foto9.jpeg" alt="25"><h3>Cool woman GIDEON </h3></div>
-        <div class="card"><img src="foto10.jpeg" alt="26"><h3>3 sahabat sesad</h3></div>
-        <div class="card"><img src="foto11.jpeg" alt="27"><h3></h3>ndk lagi-lagi dah🤞</div>
-        <div class="card"><img src="foto12.jpeg" alt="28"><h3>bukan kami sumpah bukan kami🤞</h3></div>
-        <div class="card"><img src="foto13.jpeg" alt="29"><h3>Hujan di Sekolah</h3></div>
-        <div class="card"><img src="foto14.jpeg" alt="30"><h3>last pelayanan</h3></div>
-        <div class="card"><img src="foto15.jpeg" alt="31"><h3>admin and member GIDEON</h3></div>
-        <div class="card"><img src="foto16.jpeg" alt="32"><h3>Sampai Jumpa Lagi</h3></div>
+<!-- KONTEN GALERI -->
+<div class="gallery-section">
+    <div class="container">
+        <div class="gallery-grid" id="photo-gallery">
+            <!-- Foto 1 - 68 akan otomatis muncul di sini -->
+        </div>
     </div>
 </div>
 
 <footer>
-    <p>See you in the next story,,,
-
-Follow Instagram: IX_GIDEON❤️</p>
+    <p>See you in the next story...<br><b>Instagram: IX_GIDEON❤️</b></p>
 </footer>
 
 <script>
-    // Membuat bintang-bintang kecil secara acak di latar belakang
+    // 1. Musik Otomatis saat interaksi pertama (Scroll, Klik, atau Sentuh)
+    const music = document.getElementById('bgMusic');
+    
+    function startMusic() {
+        music.play().then(() => {
+            console.log("Musik diputar");
+            // Menghapus event listener setelah musik berhasil diputar sekali
+            window.removeEventListener('scroll', startMusic);
+            window.removeEventListener('click', startMusic);
+            window.removeEventListener('touchstart', startMusic);
+        }).catch(e => {
+            console.log("Menunggu interaksi pengguna untuk memutar musik...");
+        });
+    }
+
+    // Mendengarkan interaksi untuk memicu audio
+    window.addEventListener('scroll', startMusic);
+    window.addEventListener('click', startMusic);
+    window.addEventListener('touchstart', startMusic);
+
+    // 2. Generate 68 Foto Secara Otomatis (.jpeg)
+    const gallery = document.getElementById('photo-gallery');
+    for (let i = 1; i <= 68; i++) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        const img = document.createElement('img');
+        
+        // Memanggil file foto1.jpeg sampai foto68.jpeg
+        img.src = `foto${i}.jpeg`; 
+        img.alt = `Memory Gideon ${i}`;
+        img.loading = "lazy";
+        
+        card.appendChild(img);
+        gallery.appendChild(card);
+    }
+
+    // 3. Efek Bintang di Sampul
     function createStars() {
-        const container = document.getElementById('stars');
-        for (let i = 0; i < 150; i++) {
+        const container = document.getElementById('star-container');
+        if(!container) return;
+        
+        for (let i = 0; i < 80; i++) {
             const star = document.createElement('div');
             star.style.position = 'absolute';
             star.style.width = Math.random() * 3 + 'px';
             star.style.height = star.style.width;
             star.style.background = 'white';
             star.style.borderRadius = '50%';
-            star.style.top = Math.random() * 100 + 'vh';
-            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
             star.style.opacity = Math.random();
             star.style.boxShadow = '0 0 5px white';
             
-            // Animasi kedip
             star.animate([
-                { opacity: 0.2 },
-                { opacity: 1 },
-                { opacity: 0.2 }
+                { opacity: 0.2 }, { opacity: 1 }, { opacity: 0.2 }
             ], {
                 duration: 2000 + Math.random() * 3000,
                 iterations: Infinity
             });
-
             container.appendChild(star);
         }
     }
@@ -207,9 +231,4 @@ Follow Instagram: IX_GIDEON❤️</p>
 </script>
 
 </body>
-
 </html>
-
-
-
-
